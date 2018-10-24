@@ -1,6 +1,13 @@
 #!/bin/bash
-# HackerRank: 30 Days of Code
+# Leetcode test suite
 # Arthur Dysart
+#
+# INSTRUCTIONS
+# Run bash script to check test cases for this directory.
+# 
+# EXAMPLE
+# bash python_tests.sh
+
 
 ## FUNCTION DEFINITIONS
 function create_test_directory {
@@ -10,7 +17,6 @@ function create_test_directory {
 
 function execute_tests {
   ## Executes all test cases from input and output directories
-  # Iterates over all test cases
   for TEST in ./input/*.txt ; do
     # Identifies test case files
     TEST_NUM=${TEST//[^0-9]/}
