@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Leetcode Explore - Binary search (Minimum in rotated sorted array)
+Leetcode Explore - Minimum in rotated sorted array
 https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
+Binary search solution
 
 Created on Mon Oct 22 14:50:01 2018
 @author: Arthur Dysart

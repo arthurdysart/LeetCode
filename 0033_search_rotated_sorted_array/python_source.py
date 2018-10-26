@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Leetcode Explore - Binary search (search in rotated sorted array)
+Leetcode Explore - Search in rotated sorted array
 https://leetcode.com/problems/search-in-rotated-sorted-array
+Binary search solution
 
 Created on Sun Oct 21 21:51:28 2018
 @author: Arthur Dysart

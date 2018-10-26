@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Leetcode Explore - Binary search (first bad version)
+Leetcode Explore - First bad version
 https://leetcode.com/problems/first-bad-version/
+Binary search solution
 
 Created on Sun Oct 21 17:02:27 2018
 @author: Arthur Dysart

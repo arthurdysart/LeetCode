@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Leetcode Explore - Binary search
+Leetcode Explore - Binary search introduction
 https://leetcode.com/problems/binary-search/
+Binary search solution
 
 Created on Sun Oct 21 16:21:01 2018
 @author: Arthur Dysart

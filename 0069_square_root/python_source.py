@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Leetcode Explore - Binary search (square root)
+Leetcode Explore - Square root
 https://leetcode.com/problems/sqrtx
+Binary search solution
 
 Created on Thu Oct 18 09:24:30 2018
 @author: Arthur Dysart

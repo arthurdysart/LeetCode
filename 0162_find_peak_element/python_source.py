@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Leetcode Explore - Binary search (find peak element)
+Leetcode Explore - Find peak element
 https://leetcode.com/problems/find-peak-element
+Binary search solution
 
 Created on Mon Oct 22 10:51:08 2018
 @author: Arthur Dysart

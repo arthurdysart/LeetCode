@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Leetcode Explore - Binary search (Number guessing)
+Leetcode Explore - Number guessing
 https://leetcode.com/problems/guess-number-higher-or-lower
+Binary search solution
 
 Created on Sun Oct 21 15:50:50 2018
 @author: Arthur Dysart
