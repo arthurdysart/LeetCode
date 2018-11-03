@@ -38,14 +38,16 @@ def stdin(sys_stdin):
     Imports standard input.
     """
     inputs = [x.strip("[]\n").split(",") for x in sys_stdin]
-    return [int(x) for x in inputs[0]]
+    a = [int(x) for x in inputs[0]]
+    x = int(inputs[1][0])
+    return a, x
 
 
 if __name__ == "__main__":
     # Imports standard input
-    a = stdin(sys.stdin)
+    a, x = stdin(sys.stdin)
 
     # Evaluates solution
     s = Solution()
-    r = s.remove_duplicates(a)
+    r = s.remove_element(a, x)
     print(r)
