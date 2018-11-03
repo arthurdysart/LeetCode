@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Leetcode Explore - Number guessing
+Leetcode - Number guessing
 https://leetcode.com/problems/guess-number-higher-or-lower
 Binary search solution
 

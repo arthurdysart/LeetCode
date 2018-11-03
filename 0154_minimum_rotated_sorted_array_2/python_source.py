@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-Leetcode - Minimum in rotated sorted array
-https://leetcode.com/problems/find-minimum-in-rotated-sorted-array
+Leetcode - Minimum in rotated sorted array II
+https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii
 Binary search solution
 
-Created on Mon Oct 22 14:50:01 2018
+Created on Sun Oct 28 15:12:36 2018
 @author: Arthur Dysart
 """
 
@@ -39,7 +39,10 @@ class Solution(object):
                     l = m + 1
                 # Searches left-half since contains smaller
                 else:
-                    r = m - 1
+                    if a[m] == a[r]:
+                        r = r - 1
+                    else:
+                        r = m
             if a[r] <= a[l]:
                 return a[r]
             elif a[l] < a[r]:

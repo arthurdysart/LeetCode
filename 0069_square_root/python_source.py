@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Leetcode Explore - Square root
+Leetcode - Square root
 https://leetcode.com/problems/sqrtx
 Binary search solution
 

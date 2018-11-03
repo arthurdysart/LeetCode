@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-Leetcode Explore - First and last position of element in sorted array
-https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/
+Leetcode - First and last position of element in sorted array
+https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array
 Binary search solution
 
 Created on Mon Oct 22 18:33:31 2018

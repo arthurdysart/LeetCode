@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Leetcode Explore - Sum of subarray minimums
+Leetcode - Sum of subarray minimums
 https://leetcode.com/problems/sum-of-subarray-minimums
 Dynamic programming (tabulation) solution
 

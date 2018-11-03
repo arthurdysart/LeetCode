@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Leetcode Explore - Search in rotated sorted array
+Leetcode - Search in rotated sorted array
 https://leetcode.com/problems/search-in-rotated-sorted-array
 Binary search solution
 

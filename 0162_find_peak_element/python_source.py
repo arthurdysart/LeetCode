@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Leetcode Explore - Find peak element
+Leetcode - Find peak element
 https://leetcode.com/problems/find-peak-element
 Binary search solution
 
