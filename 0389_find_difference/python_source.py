@@ -2,47 +2,76 @@
 """
 Leetcode - Find the Difference
 https://leetcode.com/problems/find-the-difference
-Bit manipulation solution
 
 Created on Sat Nov  3 19:11:50 2018
+Updated on Wed Nov 28 12:25:06 2018
 @author: Arthur Dysart
 """
 
-# REQUIRED MODULES
+
+## REQUIRED MODULES
 import sys
 
 
-# FUNCTION DEFINITIONS
+## MODULE DEFINITIONS
 class Solution:
+    """
+    Iteration and bit maniuplation of all string characters using XOR.
+
+    Time complexity: O(n)
+      - Amortized iterate over all string characters
+    Space complexity: O(1)
+      - Update constant number of pointers
+    """
+
     def find_difference(self, s, t):
         """
         Determines unique character using XOR operator.
-        :type s: str
-        :type t: str
+
+        :param str s: first input string
+        :param str t: second input string
+        :return: unique character between both strings
         :rtype: str
         """
         n = len(s)
         c = ord(t[n])
+
         for i in range(n):
             # Removes duplicate characters using XOR
             c ^= ord(s[i]) ^ ord(t[i])
+
         return chr(c)
 
-def stdin(sys_stdin):
-    """
-    Imports standard input.
-    """
-    inputs = [x.strip() for x in sys_stdin]
-    s = inputs[0]
-    t = inputs[1]
-    return s, t
+class Input:
+
+    def stdin(self, sys_stdin):
+        """
+        Imports standard input.
+
+        :param _io.TextIOWrapper sys_stdin: standard input
+        :return: first and second input strings
+        :rtype: tuple[str, str]
+        """
+        inputs = [x.strip("[]\"\n")
+                  for x
+                  in sys_stdin]
+
+        s = inputs[0]
+        t = inputs[1]
+
+        return s, t
 
 
+## MAIN MODULE
 if __name__ == "__main__":
     # Imports standard input
-    s, t = stdin(sys.stdin)
+    s, t = Input()\
+           .stdin(sys.stdin)
 
     # Evaluates solution
-    r = Solution()\
+    z = Solution()\
         .find_difference(s, t)
-    print(r)
+    print(z)
+
+
+## END OF FILE
