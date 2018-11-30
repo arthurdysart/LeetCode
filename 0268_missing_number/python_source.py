@@ -15,6 +15,30 @@ import sys
 ## MODULE DEFINITIONS
 class Solution:
     """
+    Pythonic iteration over all array elements.
+
+    Time complexity: O(n)
+      - Amortized traverse all array elements
+    Space complexity: O(1)
+      - Return constant value
+    """
+
+    def find_missing_number(self, a):
+        """
+        Determines the missing integer in input array.
+
+        :param list[int] a: input array of integers
+        :return: missing integer from array
+        :rtype: int
+        """
+        if not a:
+            return 0
+
+        n = len(a)
+        return sum(range(0, n + 1, 1)) - sum(a)
+
+class Solution2:
+    """
     Iteration and bitwise manipulation of array elements using XOR.
 
     Time complexity: O(n)
