@@ -4,6 +4,7 @@ Leetcode - Minimum Size Subarray Sum
 https://leetcode.com/problems/minimum-size-subarray-sum
 
 Created on Tue Nov 20 13:45:34 2018
+Updated on Sun Dec  2 21:09:57 2018
 @author: Arthur Dysart
 """
 
@@ -14,6 +15,53 @@ import sys
 
 ## MODULE DEFINITIONS
 class Solution:
+    """
+    Iterative dynamic window search over array of incremental cumulative sums.
+
+    Time complexity: O(n)
+        - Amortized iterate over all elements with two limit pointers
+    Space complexity: O(1)
+        - Amortized update constant number of pointers
+    """
+
+    def find_min_sub_len(self, x, a):
+        """
+        Determines minimum subarray length to meet or exceed target sum.
+
+        :param int x: target integer sum
+        :param list[int] a: array of input positive integers
+        :return: minimum number of elements required for target sum
+        :rtype: int
+        """
+        if not a:
+            return 0
+
+        r = 0
+        s = 0
+        p = float("inf")
+
+        n = len(a)
+        for l in range(0, n, 1):
+
+            while (s < x and
+                   r < n):
+                # Running sum is less than target sum
+                s += a[r]
+                r += 1
+
+            if s >= x:
+                # Running sum meets target sum
+                p = min(p, r - l)
+
+            # Remove left limit value from running sum
+            s -= a[l]
+
+        if p == float("inf"):
+            return 0
+        else:
+            return p
+
+class Solution2:
     """
     Iterative dynamic window search over array of incremental cumulative sums.
 
@@ -59,7 +107,7 @@ class Solution:
         else:
             return p
 
-class Solution2:
+class Solution3:
     """
     Iterative binary search over array of incremental cumulative sums.
 
@@ -129,7 +177,7 @@ class Solution2:
                 r = m - 1
         return l
 
-class Solution3:
+class Solution4:
     """
     Simplified dynamic programming (tabulation, bottom-up) algorithm.
 
@@ -178,7 +226,7 @@ class Solution3:
         # No subarray sum found
         return 0
 
-class Solution4:
+class Solution5:
     """
     Routine dynamic programming (tabulation, bottom-up) algorithm.
 
@@ -227,9 +275,9 @@ class Solution4:
         # No subarray sum found
         return 0
 
-class Solution5:
+class Solution6:
     """
-    Iterative brute-force solution.
+    Iteration over all start indicies for subarrays.
 
     Time complexity: O(n ** 2)
         - Amortized iterate over all start index and sublength combinations
