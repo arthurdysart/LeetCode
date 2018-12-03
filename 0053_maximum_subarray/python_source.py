@@ -4,6 +4,7 @@ Leetcode - Maximum Subarray
 https://leetcode.com/problems/maximum-subarray
 
 Created on Mon Dec  3 14:39:29 2018
+Updated on Mon Dec  3 15:32:09 2018
 @author: Arthur Dysart
 """
 
@@ -14,6 +15,47 @@ import sys
 
 # MODULE DEFINITIONS
 class Solution:
+    """
+    Greedy iteration over all array elements.
+
+    Time complexity: O(n)
+      - Iterate over all elements of array
+    Space complexity: O(1)
+      - Update constant number of pointers
+    """
+
+    def find_max_subarr_sum(self, a):
+        """
+        Determines maximum sum across all subarrays of input array.
+        Interpolates greedy algorithm.
+
+        :param list[int] a: input array of integers
+        :return: maximum subarray sum
+        :rtype: int
+        """
+        if not a:
+            return 0
+
+        # Initialize pointers for running sum (s) and max sum (p)
+        s = float("-inf")
+        p = float("-inf")
+
+        n = len(a)
+        for i in range(0, n, 1):
+
+            # Evaluate max sum by continuing or restarting subarray
+            s = max(s + a[i],
+                    a[i])
+
+            # Collect max running sum
+            p = max(p, s)
+
+        if p == float("-inf"):
+            return 0
+        else:
+            return p
+
+class Solution2:
     """
     Tabulation (dynamic programming) of all possible solutions.
 
@@ -26,7 +68,7 @@ class Solution:
     def find_max_subarr_sum(self, a):
         """
         Determines maximum sum across all subarrays of input array.
-        Interpolates sub-problem tabulation (dynamic programming) algorithm.
+        Implements sub-problem tabulation (dynamic programming) algorithm.
 
         :param list[int] a: input array of integers
         :return: maximum subarray sum
