@@ -4,6 +4,7 @@ Leetcode - Heaters
 https://leetcode.com/problems/heaters/
 
 Created on Sun Dec  2 23:55:00 2018
+Updated on Mon Dec  3 15:07:11 2018
 @author: Arthur Dysart
 """
 
@@ -200,7 +201,7 @@ if __name__ == "__main__":
            .stdin(sys.stdin)
 
     # Evaluates solution
-    z = Solution2()\
+    z = Solution()\
         .find_heating_radius(a, q)
     print(z)
 
