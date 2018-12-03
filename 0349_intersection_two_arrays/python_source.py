@@ -2,81 +2,150 @@
 """
 Leetcode - Intersection of two arrays
 https://leetcode.com/problems/intersection-of-two-arrays
-Binary search solution
 
 Created on Sun Oct 28 15:41:45 2018
+Updated on Sun Dec  2 20:30:23 2018
 @author: Arthur Dysart
 """
+
 
 # REQUIRED MODULES
 import sys
 
 
 # MODULE DEFINITIONS
-def find_element(x, u):
+class Solution:
     """
-    Searches for element "x" in array "u".
-    
-    :type x: int
-    :type u: list[int]
-    :rtype: bool
-    """
-    l = 0
-    r = len(u) - 1
-    while l <= r:
-        m = l + (r - l) // 2
-        if u[m] == x:
-            return True
-        elif u[m] < x:
-            l = m + 1
-        else:
-            r = m - 1
-    return False
+    Pythonic iteration over all elements of input arrays.
 
-class Solution(object):
-    def intersection(self, a, b):
+    Time complexity: O(min(len(n), len(m)))
+      - Traverse all elements of smaller input array
+    Space complexity: O(min(len(n), len(m)))
+      - Amortized collect all elements of smaller input array
+    """
+
+    def find_intersection(self, a1, a2):
         """
-        Determines common elements in arrays "a" and "b".
+        Determines common elements in both input arrays.
 
-        :type a: list[int]
-        :type b: list[int]
+        :param list[int] a1: first input array
+        :param list[int] a2: second input array
+        :return: array of elements common to both input arrays
+        :rtype: list[int]
+        """
+        return list(set(a1).intersection(set(a2)))
+
+class Solution2:
+    """
+    Iteration over all elements of smaller input array with binary search.
+
+    Time complexity: O(min(len(n), len(m)))
+      - Traverse all elements of smaller input array
+    Space complexity: O(min(len(n), len(m)))
+      - Amortized collect all elements of smaller input array
+    """
+
+    def find_intersection(self, a1, a2):
+        """
+        Determines common elements in both input arrays.
+
+        :param list[int] a1: first input array
+        :param list[int] a2: second input array
+        :return: array of elements common to both input arrays
         :rtype: list[int]
         """
         # Checks for empty arrays
-        if (len(a) < 1 or
-            len(b) < 1):
-            return [-1]
+        if (not a1 or
+            not a2):
+            return list()
 
         # Assign smaller array "u" and larger array "v"
-        if len(a) < len(b):
-            u = list(set(a))
-            v = list(set(b))
+        if len(a1) < len(a2):
+            u = list(set(a1))
+            v = list(set(a2))
         else:
-            u = list(set(b))
-            v = list(set(a))
+            u = list(set(a2))
+            v = list(set(a1))
 
-        # Sorts smaller array "u"
         u.sort()
 
         # Search smaller array "u" for elements of larger array "v"
-        r = [x for x in v if find_element(x, u)]
+        r = [x
+             for x
+             in v
+             if self.is_present(x, u)]
         return r
 
-def stdin(sys_stdin):
-    """
-    Imports standard input.
-    """
-    inputs = [x.strip("[]\n").split(",") for x in sys_stdin]
-    a = [int(x) for x in inputs[0]]
-    b = [int(x) for x in inputs[1]]
-    return a, b
+    def is_present(self, x, u):
+        """
+        Determines whether target element is in array using binary search.
+
+        :param int x: target element
+        :param list[int] u: target array
+        :return: True if target element found in target array
+        :rtype: bool
+        """
+        l = 0
+        r = len(u) - 1
+
+        while l <= r:
+            m = l + (r - l) // 2
+
+            if u[m] == x:
+                return True
+            elif u[m] < x:
+                l = m + 1
+            else:
+                r = m - 1
+
+        return False
+
+class Input:
+
+    def stdin(self, sys_stdin):
+        """
+        Imports standard input.
+
+        :param _io.TextIOWrapper sys_stdin: standard input
+        :return: input arrays of integers
+        :rtype: tup[list[int], list[int]]
+        """
+        inputs = [x.strip("[]\"\n")
+                  for x
+                  in sys_stdin]
+
+        a1 = self.cast_int_arr(inputs[0])
+        a2 = self.cast_int_arr(inputs[1])
+
+        return a1, a2
+
+    def cast_int_arr(self, s):
+        """
+        Converts string to array of integers.
+
+        :param str s: input string
+        :return: array of integers
+        :rtype: list[int]
+        """
+        if s == "":
+            a = list()
+        else:
+            a = [int(x)
+                 for x
+                 in s.split(",")]
+        return a
 
 
-# MAIN MODULE
+## MAIN MODULE
 if __name__ == "__main__":
-    a, b = stdin(sys.stdin)
+    # Imports standard input
+    a1, a2 = Input()\
+             .stdin(sys.stdin)
 
-    s = Solution()
-    r = s.intersection(a, b)
+    # Evaluates solution
+    z = Solution()\
+        .find_intersection(a1, a2)
+    print(z)
 
-    print(r)
+
+## END OF FILE
