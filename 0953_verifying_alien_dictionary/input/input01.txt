@@ -1,0 +1,2 @@
+["word","world","row"]
+"worldabcefghijkmnpqstuvxyz"
