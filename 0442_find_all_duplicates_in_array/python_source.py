@@ -9,6 +9,7 @@ Created on Fri Dec 21 21:39:30 2018
 
 
 # REQUIRED MODULES
+from collections import defaultdict
 import sys
 
 
@@ -47,8 +48,49 @@ class Solution:
                 a[j] *= -1
 
             else:
-                # Collect target values because negative indicates duplicate
+                # Collect target value because negative indicates duplicate
                 t.append(abs(a[i]))
+
+        return t
+
+class Solution1:
+    """
+    Iteration over all elements in input array using two-pointers.
+
+    Time complexity: O(n)
+      - Iterate over all array elements
+    Space complexity: O(n)
+      - Update hash map of value-counts pairs
+    """
+
+    def find_duplicate_vals(self, a):
+        """
+        Determines array values which occur twice.
+
+        :param list[int] a: input array of integers
+        :return: array with duplicate integers
+        :rtype: list[int]
+        """
+        if not a:
+            return list()
+
+        c = defaultdict(int)
+
+        t = list()
+
+        n = len(a)
+        for i in range(0, n, 1):
+
+            # Set target value
+            p = abs(a[i])
+
+            if c[p] < 1:
+                # Increment value count
+                c[p] += 1
+
+            else:
+                # Collect target value
+                t.append(p)
 
         return t
 
