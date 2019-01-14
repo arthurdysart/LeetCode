@@ -3,6 +3,7 @@
 Leetcode - Counting Bits
 https://leetcode.com/problems/counting-bits/
 
+Updated on Mon Jan 14 13:40:37 2019
 Created on Fri Jan 11 11:38:01 2019
 @author: Arthur Dysart
 """
@@ -56,9 +57,50 @@ class Solution:
 class Solution1:
     """
     Iteration over all elements in array.
+    Implements tabulation algorithm (bottom-up dynamic programming).
+
+    Time complexity: O(n)
+      - Iterate over all integers in range
+    Space complexity: O(n)
+      - Collect number of "1" digits for each integer in cache array
+    """
+
+    def count_bits_range(self, n):
+        """
+        Evaluates number of "1" integers in binary form of input integer range.
+
+        :param int n: maximum limit of target range (inclusive)
+        :return: array of number of "1" integers of binary representations
+        :rtype: list[int]
+        """
+        if not n:
+            return [0]
+
+        # Initialize cache array
+        c = [0
+             for n
+             in range(0, n + 1, 1)]
+
+        # Initialize reference count pointer
+        p = 0
+
+        for i in range(1, n + 1, 1):
+
+            if p == i // 2:
+                # Restart reference count pointer
+                p = i
+
+            # Set target count as increment of reference count
+            c[i] = 1 + c[i - p]
+
+        return c
+
+class Solution2:
+    """
+    Iteration over all elements in array.
 
     Time complexity: O(n * log(n))
-      - Iterate over all integers their binary representations
+      - Iterate over all integers and their binary representations
     Space complexity: O(n)
       - Collect number of "1" digits for each integer
     """
@@ -115,7 +157,7 @@ if __name__ == "__main__":
         .stdin(sys.stdin)
 
     # Evaluates solution
-    z = Solution()\
+    z = Solution1()\
         .count_bits_range(a)
     print(json.dumps(z))
 
